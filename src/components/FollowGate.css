@@ -1,0 +1,83 @@
+.follow-gate-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.follow-gate-modal {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  animation: scaleFade 0.3s ease;
+}
+
+@keyframes scaleFade {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.follow-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--dark-color);
+  margin-bottom: 0.5rem;
+}
+
+.follow-subtitle {
+  color: var(--gray-color);
+  margin-bottom: 1.5rem;
+}
+
+.follow-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.follow-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--light-gray);
+  padding: 0.75rem 1.2rem;
+  border: none;
+  border-radius: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.follow-btn.fb {
+  color: #1877f2;
+}
+
+.follow-btn.li {
+  color: #0a66c2;
+}
+
+.follow-btn.visited {
+  background: rgba(34, 197, 94, 0.1);
+  color: #22c55e;
+}
+
+.unlock-btn {
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.75rem;
+}

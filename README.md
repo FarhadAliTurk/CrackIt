@@ -1,21 +1,110 @@
-# ClothingStore - About Us Page
+# CrackIt - React Quiz App for Job Test Preparation
 
-## Description
+**CrackIt** is a modern, responsive React-based quiz app built to help students and job seekers in Pakistan prepare for competitive exams like **IBA, NTS, STS, PTS, SPSC**, and others. It includes 12+ subject-wise quiz categories, modern UI, and smooth performance.
 
-ClothingStore is a modern fashion e-commerce website where users can explore the latest collections and discover unique styles that define their identity. This About Us page highlights the brand's story, values, and showcase of featured designs.
+---
 
-## Features
+## 🚀 Features
 
-- **Hero Section**: Engaging header with a background image, introducing the brand.
-- **Brand Story**: Information about the origin, mission, and values of the ClothingStore.
-- **Core Values**: A section detailing the store's commitment to sustainability, craftsmanship, and innovation.
-- **Fashion Showcase**: A visually appealing section displaying the latest designs.
-- **Call to Action**: Encourages users to explore the collections and shop now.
+- ✅ 12+ Quiz Categories (Pakistan, Science, Islamiat, Computer, Maths, etc.)
+- ✅ Fully Responsive Design
+- ✅ Smooth CountUp Stats
+- ✅ Trusted by Logos Section
+- ✅ Premium & Free Quiz Sections
+- ✅ About Us, Features, Testimonials, Contact
+- ✅ SEO Meta Tags + Social Share Support (OG/Twitter)
 
-## Technologies Used
+---
 
-- **React**: The core frontend library to build the user interface.
-- **CSS**: Used for styling the application, implementing animations, and ensuring responsiveness.
-- **Font Awesome**: For the icons used in the core values section.
-- **React Icons** (optional): For custom icons in the UI.
+## 📁 Project Structure
 
+```
+
+crackit/
+├── public/
+│   ├── index.html
+│   ├── favicon.ico, icons, meta images
+├── src/
+│   ├── components/        # All React components
+│   ├── styles/            # CSS files
+│   ├── assets/            # Images and icons
+│   ├── App.js
+│   └── index.js
+├── package.json
+└── README.md
+
+````
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Clone the Repo
+
+```bash
+git clone https://github.com/your-username/crackit.git
+cd crackit
+````
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Start the App
+
+```bash
+npm start
+```
+
+Visit the app at `http://localhost:3000`.
+
+---
+
+## 📱 Favicons & Manifest
+
+Place these in `/public`:
+
+* `favicon.ico`
+* `favicon-16x16.png`
+* `favicon-32x32.png`
+* `apple-touch-icon.png`
+* `android-chrome-192x192.png`
+* `android-chrome-512x512.png`
+* `site.webmanifest`
+
+---
+
+## 🛠️ Technologies Used
+
+* React 19
+* React Icons
+* Bootstrap 5
+* CSS3
+* Google Fonts (Poppins, Leckerli One)
+
+---
+
+## 👨‍💻 Developer
+
+**Farhad Ali Turk**
+Frontend Developer | React Specialist
+📧 [Facebook Profile](https://www.facebook.com/profile.php?id=61551771230717&mibextid=ZbWKwL)
+
+---
+
+## 📄 License
+
+Licensed under the [MIT License](LICENSE).
+
+---
+
+> 💡 Perfect for students preparing for Grade 14 government tests in Pakistan!
+
+```
+
+---
+
+Let me know if you want a GitHub-friendly version with badges or deploy instructions (e.g. GitHub Pages or Netlify).
+```
