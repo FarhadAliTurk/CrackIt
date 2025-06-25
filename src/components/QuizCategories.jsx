@@ -4,34 +4,40 @@ import { motion } from 'framer-motion';
 import {
   FaGlobeAsia, FaFlask, FaCalculator, FaLaptopCode,
   FaMosque, FaBook, FaBrain, FaLandmark, FaMoneyBillWave,
-  FaUniversity, FaMicroscope, FaStar
+  FaUniversity, FaMicroscope, FaStar, FaChalkboardTeacher,
+  FaCalendarAlt, FaBookOpen, FaBolt
 } from 'react-icons/fa';
 import Quiz from './Quiz';
-import FollowGate from './FollowGate'; // ✅ Import FollowGate
+import FollowGate from './FollowGate';
 
 const QuizCategories = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const [showFollowGate, setShowFollowGate] = useState(false); // ✅ Gate state
-  const [nextCategory, setNextCategory] = useState(null);       // ✅ Next category to unlock
+  const [showFollowGate, setShowFollowGate] = useState(false);
+  const [nextCategory, setNextCategory] = useState(null);
 
   const categories = [
-    { name: "Pakistan Questions", icon: <FaGlobeAsia />, count: 250 },
-    { name: "Science Questions", icon: <FaFlask />, count: 180 },
-    { name: "Maths Questions", icon: <FaCalculator />, count: 150 },
-    { name: "Computer Questions", icon: <FaLaptopCode />, count: 120 },
-    { name: "Islamiat Questions", icon: <FaMosque />, count: 200 },
-    { name: "English Questions", icon: <FaBook />, count: 100 },
-    { name: "IQ Questions", icon: <FaBrain />, count: 80 },
-    { name: "Capitals Questions", icon: <FaLandmark />, count: 90 },
-    { name: "Currencies Questions", icon: <FaMoneyBillWave />, count: 70 },
-    { name: "World Organizations Questions", icon: <FaUniversity />, count: 60 },
-    { name: "Discoveries & Inventions Questions", icon: <FaMicroscope />, count: 110 },
-    { name: "Astronomy Questions", icon: <FaStar />, count: 75 }
+    { name: "Pakistan GK", icon: <FaGlobeAsia />, count: 250 },
+    { name: "Everyday Science", icon: <FaFlask />, count: 180 },
+    { name: "Maths", icon: <FaCalculator />, count: 150 },
+    { name: "Computer Science", icon: <FaLaptopCode />, count: 120 },
+    { name: "Islamiat", icon: <FaMosque />, count: 120 },
+    { name: "English", icon: <FaBook />, count: 100 },
+    { name: "IQ / Reasoning", icon: <FaBrain />, count: 100 },
+    { name: "Capitals", icon: <FaLandmark />, count: 50 },
+    { name: "Currencies", icon: <FaMoneyBillWave />, count: 50 },
+    { name: "World Organizations", icon: <FaUniversity />, count: 40 },
+    { name: "Discoveries & Inventions", icon: <FaMicroscope />, count: 50 },
+    { name: "Astronomy", icon: <FaStar />, count: 30 },
+    { name: "Education Pedagogy", icon: <FaChalkboardTeacher />, count: 60 },
+    { name: "Famous Books & Authors", icon: <FaBookOpen />, count: 30 },
+    { name: "Important Days", icon: <FaCalendarAlt />, count: 30 },
+    { name: "Scientific Instruments", icon: <FaBolt />, count: 30 },
+    { name: "Abbreviations", icon: <FaUniversity />, count: 30 }
   ];
 
   const handleCategorySelect = (category) => {
-    setNextCategory(category.name.replace(' Questions', '')); // Clean name
-    setShowFollowGate(true); // Show gate
+    setNextCategory(category.name);
+    setShowFollowGate(true);
   };
 
   const handleQuizClose = () => {
@@ -55,11 +61,11 @@ const QuizCategories = () => {
         <div className="section-header">
           <h2 className="section-title">Quiz Categories</h2>
           <p className="section-subtitle">
-            Prepare smartly with categorized questions designed for Pakistani job tests.
+            Smartly categorized MCQs for all 14-grade job tests in Pakistan.
           </p>
         </div>
 
-        <motion.div 
+        <motion.div
           className="categories-grid"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -84,7 +90,6 @@ const QuizCategories = () => {
         </motion.div>
       </div>
 
-      {/* ✅ Show FollowGate popup */}
       {showFollowGate && <FollowGate onUnlock={handleUnlock} />}
     </section>
   );

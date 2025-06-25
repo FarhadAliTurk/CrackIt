@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { quizData } from '../data/QuizData';
+import { quizData } from '../data/quizData';
 import './Quiz.css';
 import {
   FaTimes,
@@ -23,7 +23,7 @@ const Quiz = ({ category, onClose }) => {
   useEffect(() => {
     if (category && quizData[category]) {
       const categoryQuestions = [...quizData[category]];
-      const shuffled = categoryQuestions.sort(() => 0.5 - Math.random()).slice(0, 10);
+      const shuffled = categoryQuestions.sort(() => 0.5 - Math.random());
       setQuestions(shuffled);
     }
   }, [category]);
