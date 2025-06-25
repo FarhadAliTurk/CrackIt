@@ -22,10 +22,8 @@ const Quiz = ({ category, onClose }) => {
 
   useEffect(() => {
     if (category && quizData[category]) {
-      const categoryQuestions = [...quizData[category]];
-      const shuffled = categoryQuestions.sort(() => 0.5 - Math.random());
-      setQuestions(shuffled);
-    }
+    setQuestions([...quizData[category]]); // Keep original order
+  }
   }, [category]);
 
   const handleOptionSelect = (option) => {
