@@ -4,22 +4,21 @@
   --primary-color: #4f46e5;
   --primary-dark: #4338ca;
   --secondary-color: #10b981;
-   --accent-color: #f59e0b; /* NEW: Gold accent */
+  --accent-color: #f59e0b;
   --dark-color: #1e293b;
-   --gray-color: #475569; /* Darkened for readability */
-  --light-color: #f8fafc;
-  --gray-color: #64748b;
+  --gray-color: #475569; /* Improved contrast */
   --light-gray: #e2e8f0;
-  --danger-color: #ef4444;  
+  --light-color: #f8fafc;
+  --danger-color: #ef4444;
   --warning-color: #f59e0b;
   --success-color: #10b981;
-  
+
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  
+
   --radius-sm: 0.25rem;
   --radius: 0.5rem;
   --radius-md: 0.75rem;
@@ -27,6 +26,9 @@
   --radius-full: 9999px;
 }
 
+
+
+/* Reset and global styles */
 * {
   margin: 0;
   padding: 0;
@@ -36,6 +38,12 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
@@ -51,7 +59,18 @@ a {
   color: inherit;
 }
 
+img,
+video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
+ul {
+  list-style: none;
+}
+
+/* Utility classes */
 .text-accent {
   color: var(--accent-color);
 }
@@ -60,16 +79,7 @@ a {
   background-color: var(--accent-color);
 }
 
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-ul {
-  list-style: none;
-}
-
+/* Container */
 .container {
   width: 100%;
   max-width: 1200px;
@@ -77,6 +87,7 @@ ul {
   padding: 0 1.5rem;
 }
 
+/* Sections */
 section {
   padding: 5rem 0;
 }
@@ -100,6 +111,7 @@ section {
   margin: 0 auto;
 }
 
+/* Buttons */
 .btn {
   display: inline-block;
   padding: 0.75rem 1.5rem;
@@ -156,8 +168,7 @@ section {
   color: var(--primary-color);
 }
 
-
-/* New premium button variant */
+/* Premium Button */
 .btn-premium {
   background: linear-gradient(90deg, var(--accent-color) 0%, #e67e22 100%);
   color: white;
@@ -167,4 +178,3 @@ section {
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
 }
-

@@ -1,15 +1,14 @@
 import React from 'react';
 import { FaTrophy } from 'react-icons/fa';
 import CountUp from 'react-countup';
-import HeroImage from '../assets/success.png';
+import HeroImage from '../assets/success.webp'; // Converted to WebP
+import HeroImageFallback from '../assets/success.png';
 import './Hero.css';
 
 const Hero = () => {
   const scrollToCategories = () => {
     const section = document.getElementById('categories');
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
+    section?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -27,6 +26,7 @@ const Hero = () => {
               <button 
                 className="btn btn-primary btn-lg hover-scale"
                 onClick={scrollToCategories}
+                aria-label="Start practicing quizzes"
               >
                 Start Practicing
               </button>
@@ -55,14 +55,20 @@ const Hero = () => {
 
           <div className="hero-visual">
             <div className="hero-image-container">
-              <img 
-                src={HeroImage}
-                alt="Successful candidate"
-                className="hero-image"
-                loading="lazy"
-              />
+              <picture>
+                <source srcSet={HeroImage} type="image/webp" />
+                <img 
+                  src={HeroImageFallback}
+                  alt="Successful candidate holding certificate"
+                  className="hero-image"
+                  width="600"
+                  height="400"
+                  fetchpriority="high"
+                  decoding="async"
+                />
+              </picture>
               <div className="achievement-badge">
-                <FaTrophy />
+                <FaTrophy aria-hidden="true" />
               </div>
             </div>
           </div>
