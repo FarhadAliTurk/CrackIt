@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { FaTimes, FaBars, FaCrown } from 'react-icons/fa';
 import './Navbar.css';
 
@@ -8,55 +8,72 @@ const Navbar = () => {
   const [activeSection, setActiveSection] = useState('home');
   const sectionsRef = useRef([]);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-      
-      const scrollPosition = window.scrollY + 100;
-      sectionsRef.current.forEach((section) => {
-        if (!section) return;
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-          setActiveSection(section.id);
+  // Scroll detection with throttle
+  const handleScroll = useCallback(() => {
+    setScrolled(window.scrollY > 50);
+
+    const scrollPosition = window.scrollY + 100;
+
+    for (const section of sectionsRef.current) {
+      if (!section) continue;
+      const { offsetTop, offsetHeight, id } = section;
+      if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+        if (activeSection !== id) {
+          setActiveSection(id);
         }
-      });
-    };
+        break;
+      }
+    }
+  }, [activeSection]);
 
+  useEffect(() => {
+    // Cache refs only once
     sectionsRef.current = [
-      document.getElementById('home'),
-      document.getElementById('about'),
-      document.getElementById('categories'),
-      document.getElementById('premium'),
-      document.getElementById('features'),
-      document.getElementById('testimonials'),
-      document.getElementById('contact')
-    ];
+      'home',
+      'about',
+      'categories',
+      'premium',
+      'features',
+      'testimonials',
+      'contact'
+    ].map(id => document.getElementById(id));
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [handleScroll]);
 
-  const handleNavClick = (sectionId) => {
-    setActiveSection(sectionId);
+  // Toggle body scroll
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? 'hidden' : '';
+  }, [mobileMenuOpen]);
+
+  // Close mobile menu on Escape key
+  useEffect(() => {
+    const handleKeyDown = e => {
+      if (e.key === 'Escape' && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [mobileMenuOpen]);
+
+  const handleNavClick = (id) => {
+    setActiveSection(id);
     setMobileMenuOpen(false);
   };
-
-  useEffect(() => {
-    document.body.style.overflow = mobileMenuOpen ? 'hidden' : 'auto';
-  }, [mobileMenuOpen]);
 
   return (
     <header className={`navbar ${scrolled ? 'scrolled' : ''} ${mobileMenuOpen ? 'mobile-open' : ''}`}>
       <div className="container">
         <a href="#home" className="navbar-brand" aria-label="CrackIt Home">
           <span className="logo-text">CrackIt</span>
-          <span className="logo-dot"></span>
+          <span className="logo-dot" aria-hidden="true"></span>
         </a>
 
-        <button 
+        <button
           className="mobile-menu-toggle"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          onClick={() => setMobileMenuOpen(prev => !prev)}
           aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileMenuOpen}
           aria-controls="main-navigation"
@@ -64,65 +81,28 @@ const Navbar = () => {
           {mobileMenuOpen ? <FaTimes /> : <FaBars />}
         </button>
 
-        <nav id="main-navigation" className={`navbar-nav ${mobileMenuOpen ? 'open' : ''}`}>
+        <nav id="main-navigation" className={`navbar-nav ${mobileMenuOpen ? 'open' : ''}`} role="navigation">
           <div className="nav-links">
-            <a 
-              href="#home" 
-              className={`nav-link ${activeSection === 'home' ? 'active' : ''}`}
-              onClick={() => handleNavClick('home')}
-              aria-current={activeSection === 'home' ? 'page' : undefined}
-            >
-              Home
-            </a>
-            <a 
-              href="#about" 
-              className={`nav-link ${activeSection === 'about' ? 'active' : ''}`}
-              onClick={() => handleNavClick('about')}
-              aria-current={activeSection === 'about' ? 'page' : undefined}
-            >
-              About
-            </a>
-            <a 
-              href="#categories" 
-              className={`nav-link ${activeSection === 'categories' ? 'active' : ''}`}
-              onClick={() => handleNavClick('categories')}
-              aria-current={activeSection === 'categories' ? 'page' : undefined}
-            >
-              Quiz
-            </a>
-            <a 
-              href="#premium" 
-              className={`nav-link premium-link ${activeSection === 'premium' ? 'active' : ''}`}
-              onClick={() => handleNavClick('premium')}
-              aria-current={activeSection === 'premium' ? 'page' : undefined}
-            >
-              <span>Premium</span>
-              <span className="premium-badge" aria-hidden="true"><FaCrown /></span>
-            </a>
-            <a 
-              href="#features" 
-              className={`nav-link ${activeSection === 'features' ? 'active' : ''}`}
-              onClick={() => handleNavClick('features')}
-              aria-current={activeSection === 'features' ? 'page' : undefined}
-            >
-              Features
-            </a>
-            <a 
-              href="#testimonials" 
-              className={`nav-link ${activeSection === 'testimonials' ? 'active' : ''}`}
-              onClick={() => handleNavClick('testimonials')}
-              aria-current={activeSection === 'testimonials' ? 'page' : undefined}
-            >
-              Testimonials
-            </a>
-            <a 
-              href="#contact" 
-              className={`nav-link ${activeSection === 'contact' ? 'active' : ''}`}
-              onClick={() => handleNavClick('contact')}
-              aria-current={activeSection === 'contact' ? 'page' : undefined}
-            >
-              Contact
-            </a>
+            {[
+              { id: 'home', label: 'Home' },
+              { id: 'about', label: 'About' },
+              { id: 'categories', label: 'Quiz' },
+              { id: 'premium', label: 'Premium', icon: <FaCrown /> },
+              { id: 'features', label: 'Features' },
+              { id: 'testimonials', label: 'Testimonials' },
+              { id: 'contact', label: 'Contact' }
+            ].map(({ id, label, icon }) => (
+              <a
+                key={id}
+                href={`#${id}`}
+                className={`nav-link ${id === 'premium' ? 'premium-link' : ''} ${activeSection === id ? 'active' : ''}`}
+                onClick={() => handleNavClick(id)}
+                aria-current={activeSection === id ? 'page' : undefined}
+              >
+                <span>{label}</span>
+                {icon && <span className="premium-badge" aria-hidden="true">{icon}</span>}
+              </a>
+            ))}
           </div>
         </nav>
       </div>

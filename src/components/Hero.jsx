@@ -1,20 +1,21 @@
 import React from 'react';
 import { FaTrophy } from 'react-icons/fa';
 import CountUp from 'react-countup';
-import HeroImage from '../assets/success.webp'; // Converted to WebP
+import HeroImageWebP from '../assets/success.webp';
 import HeroImageFallback from '../assets/success.png';
 import './Hero.css';
 
 const Hero = () => {
   const scrollToCategories = () => {
     const section = document.getElementById('categories');
-    section?.scrollIntoView({ behavior: 'smooth' });
+    if (section) section.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section id="home" className="hero-section">
+    <section id="home" className="hero-section" aria-label="Hero section">
       <div className="hero-container">
         <div className="hero-content">
+          {/* Text Content */}
           <div className="hero-text">
             <h1 className="hero-title">
               Crack <span>Job Tests</span> with Confidence
@@ -22,6 +23,8 @@ const Hero = () => {
             <p className="hero-subtitle">
               Master every MCQ and secure your Grade 14 job. Trusted by thousands of smart candidates across Pakistan.
             </p>
+
+            {/* CTA + Stats */}
             <div className="hero-cta">
               <button 
                 className="btn btn-primary btn-lg hover-scale"
@@ -30,7 +33,8 @@ const Hero = () => {
               >
                 Start Practicing
               </button>
-              <div className="hero-stats">
+
+              <div className="hero-stats" aria-label="Statistics summary">
                 <div className="stat-item">
                   <div className="stat-number">
                     <CountUp end={15000} duration={2.5} separator="," />+
@@ -53,22 +57,24 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="hero-visual">
+          {/* Hero Image */}
+          <div className="hero-visual" role="img" aria-label="Visual success representation">
             <div className="hero-image-container">
               <picture>
-                <source srcSet={HeroImage} type="image/webp" />
-                <img 
+                <source srcSet={HeroImageWebP} type="image/webp" />
+                <img
                   src={HeroImageFallback}
                   alt="Successful candidate holding certificate"
                   className="hero-image"
                   width="600"
                   height="400"
+                  loading="eager"
                   fetchpriority="high"
                   decoding="async"
                 />
               </picture>
-              <div className="achievement-badge">
-                <FaTrophy aria-hidden="true" />
+              <div className="achievement-badge" aria-hidden="true">
+                <FaTrophy />
               </div>
             </div>
           </div>

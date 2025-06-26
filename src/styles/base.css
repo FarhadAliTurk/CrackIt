@@ -1,12 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
+/* Font loading optimization */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrJJfedw.woff2') format('woff2');
+}
+
+/* Theme Variables */
 :root {
   --primary-color: #4f46e5;
   --primary-dark: #4338ca;
   --secondary-color: #10b981;
   --accent-color: #f59e0b;
   --dark-color: #1e293b;
-  --gray-color: #475569; /* Improved contrast */
+  --gray-color: #475569;
   --light-gray: #e2e8f0;
   --light-color: #f8fafc;
   --danger-color: #ef4444;
@@ -26,10 +36,10 @@
   --radius-full: 9999px;
 }
 
-
-
-/* Reset and global styles */
-* {
+/* Reset and Base Styles */
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -40,23 +50,34 @@ html {
   scroll-behavior: smooth;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
-}
-
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', system-ui, sans-serif;
   line-height: 1.6;
   color: var(--dark-color);
   background-color: #fff;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Base Elements */
 a {
   text-decoration: none;
   color: inherit;
+}
+
+a:focus {
+  outline: 2px dashed var(--primary-color);
+  outline-offset: 3px;
 }
 
 img,
@@ -70,15 +91,6 @@ ul {
   list-style: none;
 }
 
-/* Utility classes */
-.text-accent {
-  color: var(--accent-color);
-}
-
-.bg-accent {
-  background-color: var(--accent-color);
-}
-
 /* Container */
 .container {
   width: 100%;
@@ -87,7 +99,7 @@ ul {
   padding: 0 1.5rem;
 }
 
-/* Sections */
+/* Section Spacing */
 section {
   padding: 5rem 0;
 }
@@ -124,12 +136,18 @@ section {
   outline: none;
 }
 
+.btn:focus-visible {
+  outline: 2px dashed var(--primary-color);
+  outline-offset: 3px;
+}
+
 .btn-primary {
   background-color: var(--primary-color);
   color: white;
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:focus-visible {
   background-color: var(--primary-dark);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
@@ -174,7 +192,17 @@ section {
   color: white;
 }
 
-.btn-premium:hover {
+.btn-premium:hover,
+.btn-premium:focus-visible {
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
+}
+
+/* Accent */
+.text-accent {
+  color: var(--accent-color);
+}
+
+.bg-accent {
+  background-color: var(--accent-color);
 }
