@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/CrackIt/static/css/main.72e90120.css",
-    "main.js": "/CrackIt/static/js/main.9af4fe98.js",
+    "main.js": "/CrackIt/static/js/main.00f9d8b3.js",
     "static/css/949.6c6f3514.chunk.css": "/CrackIt/static/css/949.6c6f3514.chunk.css",
     "static/js/949.050672f8.chunk.js": "/CrackIt/static/js/949.050672f8.chunk.js",
     "static/css/876.345f789c.chunk.css": "/CrackIt/static/css/876.345f789c.chunk.css",
-    "static/js/876.549f29d5.chunk.js": "/CrackIt/static/js/876.549f29d5.chunk.js",
+    "static/js/876.1cc90f85.chunk.js": "/CrackIt/static/js/876.1cc90f85.chunk.js",
     "static/css/918.a067a02b.chunk.css": "/CrackIt/static/css/918.a067a02b.chunk.css",
     "static/js/918.b34fb2d3.chunk.js": "/CrackIt/static/js/918.b34fb2d3.chunk.js",
     "static/css/7.dd1d9979.chunk.css": "/CrackIt/static/css/7.dd1d9979.chunk.css",
@@ -26,11 +26,11 @@
     "static/media/user3.webp": "/CrackIt/static/media/user3.e48a7f51b153962963cd.webp",
     "index.html": "/CrackIt/index.html",
     "main.72e90120.css.map": "/CrackIt/static/css/main.72e90120.css.map",
-    "main.9af4fe98.js.map": "/CrackIt/static/js/main.9af4fe98.js.map",
+    "main.00f9d8b3.js.map": "/CrackIt/static/js/main.00f9d8b3.js.map",
     "949.6c6f3514.chunk.css.map": "/CrackIt/static/css/949.6c6f3514.chunk.css.map",
     "949.050672f8.chunk.js.map": "/CrackIt/static/js/949.050672f8.chunk.js.map",
     "876.345f789c.chunk.css.map": "/CrackIt/static/css/876.345f789c.chunk.css.map",
-    "876.549f29d5.chunk.js.map": "/CrackIt/static/js/876.549f29d5.chunk.js.map",
+    "876.1cc90f85.chunk.js.map": "/CrackIt/static/js/876.1cc90f85.chunk.js.map",
     "918.a067a02b.chunk.css.map": "/CrackIt/static/css/918.a067a02b.chunk.css.map",
     "918.b34fb2d3.chunk.js.map": "/CrackIt/static/js/918.b34fb2d3.chunk.js.map",
     "7.dd1d9979.chunk.css.map": "/CrackIt/static/css/7.dd1d9979.chunk.css.map",
@@ -48,6 +48,6 @@
   },
   "entrypoints": [
     "static/css/main.72e90120.css",
-    "static/js/main.9af4fe98.js"
+    "static/js/main.00f9d8b3.js"
   ]
 }
