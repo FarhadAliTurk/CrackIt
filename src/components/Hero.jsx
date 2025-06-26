@@ -2,7 +2,6 @@ import React from 'react';
 import { FaTrophy } from 'react-icons/fa';
 import CountUp from 'react-countup';
 import HeroImageWebP from '../assets/success.webp';
-import HeroImageFallback from '../assets/success.png';
 import './Hero.css';
 
 const Hero = () => {
@@ -63,7 +62,7 @@ const Hero = () => {
               <picture>
                 <source srcSet={HeroImageWebP} type="image/webp" />
                 <img
-                  src={HeroImageFallback}
+                  src={HeroImageWebP}
                   alt="Successful candidate holding certificate"
                   className="hero-image"
                   width="600"
