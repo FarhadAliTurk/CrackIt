@@ -4,11 +4,11 @@ import './styles/base.css';
 import './styles/utilities.css';
 import './styles/animations.css';
 import './styles/loader.css';
+import Hero from './components/Hero';
 
 
 // Lazy-loaded components
 const Navbar = lazy(() => import('./components/Navbar'));
-const Hero = lazy(() => import('./components/Hero'));
 const AboutUs = lazy(() => import('./components/AboutUs'));
 const QuizCategories = lazy(() => import('./components/QuizCategories'));
 const PremiumQuiz = lazy(() => import('./components/PremiumQuiz'));

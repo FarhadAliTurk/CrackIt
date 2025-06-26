@@ -1,9 +1,9 @@
 import React from 'react';
 import './Testimonials.css';
 import { FaQuoteRight } from 'react-icons/fa';
-import Avatar1 from '../assets/avatars/user1.jpg';
-import Avatar2 from '../assets/avatars/user2.jpg';
-import Avatar3 from '../assets/avatars/user3.jpg';
+import Avatar1 from '../assets/avatars/user1.webp';
+import Avatar2 from '../assets/avatars/user2.webp';
+import Avatar3 from '../assets/avatars/user3.webp';
 
 const testimonials = [
   {
