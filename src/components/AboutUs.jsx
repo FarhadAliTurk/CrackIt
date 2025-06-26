@@ -3,11 +3,12 @@ import './AboutUs.css';
 import { motion } from 'framer-motion';
 
 const recognizedLogos = [ 
+  { name: 'SPSC', image: 'https://spsc.gos.pk/images/logo2.png' },
   { name: 'IBA', image: 'https://apply.sts.net.pk/assets/images/logos/logo.png' },
   { name: 'NTS', image: 'https://www.nts.org.pk/new/img/nts_logo.png' },
   { name: 'PTS', image: 'https://pts.org.pk/siteContent/images/logo1.jpg' },
   { name: 'ETEA', image: 'https://etea.edu.pk/images/logo_green.svg' },
-  { name: 'OTS', image: 'https://ots.org.pk/images/logo-new-ots.png' }
+  { name: 'OTS', image: 'https://ots.org.pk/images/logo-new-ots.png' },
 ];
 
 const AboutUs = () => {
